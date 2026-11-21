@@ -1,0 +1,24 @@
+{
+  "name": "raggiesoft-jessica",
+  "version": "1.0.0",
+  "description": "Jessica (jessica.raggiesoft.com) — Jessica Ragsdale's Guided Tour of RaggieSoft, Michael's Vision & November 2006 Seed Story, and Rachel's ('Bug') QA Desk. Built with Preact 10 + @preact/signals + TypeScript + Vite Static SSG.",
+  "license": "MIT",
+  "author": "Michael P. Ragsdale (https://raggiesoft.com)",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && vite build --ssr src/entry-server.tsx --outDir .ssr-temp && node scripts/prerender.mjs",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@preact/signals": "^2.0.2",
+    "preact": "^10.26.4",
+    "preact-render-to-string": "^6.5.13"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.2",
+    "vite": "^6.2.0"
+  }
+}

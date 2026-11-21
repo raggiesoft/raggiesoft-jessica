@@ -1,0 +1,5 @@
+# Jessica — Keeper of the House (https://jessica.raggiesoft.com)
+User-agent: *
+Allow: /
+
+Sitemap: https://jessica.raggiesoft.com/sitemap.xml

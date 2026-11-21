@@ -1,0 +1,652 @@
+/**
+ * @license MIT
+ * ============================================================================
+ * src/styles/sanctuary.css — Moosewood Drive Sanctuary Stylesheet (Day & Lamp)
+ * Property: https://jessica.raggiesoft.com (raggiesoft-jessica)
+ * ============================================================================
+ * PLAIN-ENGLISH OVERVIEW (100-LEVEL CSS & ACCESSIBILITY GUIDE):
+ *   What does this stylesheet control?
+ *     It styles Jessica's study on `https://jessica.raggiesoft.com` with warm
+ *     oak, deep forest-emerald accents (Jessica's signature color across the
+ *     RaggieSoft family!), and golden amber reading-lamp highlights.
+ *
+ *   How Accessible Light & Dark Themes Work Together:
+ *     1. `:root` defines our bright **Daylight Study** colors (`#f7f4ee` warm
+ *        parchment background with `#12201b` deep ink text — exceeding 13:1
+ *        contrast!).
+ *     2. `@media (prefers-color-scheme: dark)` automatically switches to our
+ *        cozy **Evening Lamp** colors (`#0b1512` deep pine-slate background
+ *        with `#f2efe9` warm cream text) when a visitor's phone or computer
+ *        is set to Dark Mode.
+ *     3. `[data-lamp-mode="light"]` and `[data-lamp-mode="dark"]` allow any
+ *        visitor to override their device setting with one click in the header!
+ * ============================================================================
+ */
+
+/* --------------------------------------------------------------------------
+ * 1. DESIGN TOKENS (DAYLIGHT STUDY DEFAULT)
+ * -------------------------------------------------------------------------- */
+:root {
+  color-scheme: light dark;
+  --js-bg: #f7f4ee;
+  --js-bg-elevated: #ffffff;
+  --js-bg-subtle: #ede7db;
+  --js-bg-accent: #e1efe7;
+  --js-text: #12201b;
+  --js-text-muted: #3d524a;
+  --js-border: #cbbfae;
+  --js-border-strong: #8fa59b;
+  --js-brand: #0f5c3a;
+  --js-brand-hover: #0a442b;
+  --js-brand-ink: #ffffff;
+  --js-amber: #8a4b08;
+  --js-amber-bg: #fef3c7;
+  --js-focus-ring: #0f5c3a;
+  --js-shadow: 0 10px 28px rgba(18, 32, 27, 0.08);
+  --js-radius-lg: 18px;
+  --js-radius-md: 12px;
+  --js-font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --js-font-serif: Georgia, 'Iowan Old Style', 'Times New Roman', serif;
+}
+
+/* Automatic OS Dark Mode when lamp selector is set to `auto` */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-lamp-mode='light']) {
+    --js-bg: #0b1512;
+    --js-bg-elevated: #12221d;
+    --js-bg-subtle: #182d26;
+    --js-bg-accent: #16382b;
+    --js-text: #f2efe9;
+    --js-text-muted: #c2d1ca;
+    --js-border: #28463c;
+    --js-border-strong: #437060;
+    --js-brand: #4ade80;
+    --js-brand-hover: #86efac;
+    --js-brand-ink: #071912;
+    --js-amber: #fcd34d;
+    --js-amber-bg: rgba(245, 158, 11, 0.16);
+    --js-focus-ring: #fbbf24;
+    --js-shadow: 0 14px 34px rgba(0, 0, 0, 0.42);
+  }
+}
+
+/* Explicit Visitor Override: Evening Lamp (`dark`) */
+:root[data-lamp-mode='dark'] {
+  color-scheme: dark;
+  --js-bg: #0b1512;
+  --js-bg-elevated: #12221d;
+  --js-bg-subtle: #182d26;
+  --js-bg-accent: #16382b;
+  --js-text: #f2efe9;
+  --js-text-muted: #c2d1ca;
+  --js-border: #28463c;
+  --js-border-strong: #437060;
+  --js-brand: #4ade80;
+  --js-brand-hover: #86efac;
+  --js-brand-ink: #071912;
+  --js-amber: #fcd34d;
+  --js-amber-bg: rgba(245, 158, 11, 0.16);
+  --js-focus-ring: #fbbf24;
+  --js-shadow: 0 14px 34px rgba(0, 0, 0, 0.42);
+}
+
+/* Explicit Visitor Override: Daylight Study (`light`) */
+:root[data-lamp-mode='light'] {
+  color-scheme: light;
+}
+
+/* --------------------------------------------------------------------------
+ * 2. DOCUMENT RESET & TYPOGRAPHY FOUNDATION
+ * -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: var(--js-font-sans);
+  font-size: 1rem;
+  line-height: 1.65;
+  background-color: var(--js-bg);
+  color: var(--js-text);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* High-visibility keyboard focus outline on every interactive element */
+:focus-visible {
+  outline: 3px solid var(--js-focus-ring);
+  outline-offset: 3px;
+}
+
+/* Accessible Skip-to-Content Link (slides into view when focused via Tab) */
+.js-skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -5rem;
+  z-index: 9999;
+  padding: 0.65rem 1.1rem;
+  border-radius: var(--js-radius-md);
+  background: var(--js-brand);
+  color: var(--js-brand-ink);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.js-skip-link:focus {
+  top: 0.75rem;
+}
+
+/* --------------------------------------------------------------------------
+ * 3. SITE HEADER, BRANDING, NAVIGATION & LAMP MODE SWITCHER
+ * -------------------------------------------------------------------------- */
+.js-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.js-header {
+  background: var(--js-bg-elevated);
+  border-bottom: 1px solid var(--js-border);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.js-header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.85rem 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.85rem 1.25rem;
+}
+
+.js-brand-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  text-decoration: none;
+  color: var(--js-text);
+}
+
+.js-brand-icon {
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+}
+
+.js-brand-title {
+  display: block;
+  font-family: var(--js-font-serif);
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.js-brand-subtitle {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--js-text-muted);
+}
+
+.js-nav-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.js-nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.js-nav-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--js-text-muted);
+  border: 1px solid transparent;
+  transition: background-color 0.16s ease, color 0.16s ease, border-color 0.16s ease;
+}
+
+.js-nav-link:hover {
+  background: var(--js-bg-subtle);
+  color: var(--js-text);
+}
+
+.js-nav-link.is-active {
+  background: var(--js-bg-accent);
+  color: var(--js-text);
+  border-color: var(--js-border-strong);
+}
+
+/* Segmented Daylight / Auto / Evening Lamp Switcher */
+.js-lamp-switcher {
+  display: inline-flex;
+  align-items: center;
+  background: var(--js-bg-subtle);
+  border: 1px solid var(--js-border);
+  border-radius: 999px;
+  padding: 0.2rem;
+  gap: 0.15rem;
+}
+
+.js-lamp-btn {
+  appearance: none;
+  border: none;
+  background: transparent;
+  color: var(--js-text-muted);
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.32rem 0.65rem;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.js-lamp-btn:hover {
+  color: var(--js-text);
+}
+
+.js-lamp-btn[aria-pressed='true'] {
+  background: var(--js-brand);
+  color: var(--js-brand-ink);
+}
+
+/* --------------------------------------------------------------------------
+ * 4. MAIN CONTAINER, HERO BANNERS & EDITORIAL TYPOGRAPHY
+ * -------------------------------------------------------------------------- */
+.js-main {
+  flex: 1;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 3.5rem;
+}
+
+.js-hero {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 2rem;
+  align-items: center;
+  background: var(--js-bg-elevated);
+  border: 1px solid var(--js-border);
+  border-radius: var(--js-radius-lg);
+  padding: 2rem;
+  box-shadow: var(--js-shadow);
+  margin-bottom: 2.5rem;
+}
+
+@media (max-width: 900px) {
+  .js-hero {
+    grid-template-columns: 1fr;
+    padding: 1.5rem;
+  }
+}
+
+.js-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  background: var(--js-amber-bg);
+  color: var(--js-amber);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.85rem;
+}
+
+.js-hero h1 {
+  font-family: var(--js-font-serif);
+  font-size: clamp(1.85rem, 3.2vw, 2.65rem);
+  line-height: 1.2;
+  margin: 0 0 1rem;
+}
+
+.js-lead {
+  font-size: 1.08rem;
+  color: var(--js-text-muted);
+  margin: 0 0 1.15rem;
+}
+
+.js-quote-callout {
+  margin: 1.15rem 0 1.4rem;
+  padding: 0.95rem 1.15rem;
+  border-left: 4px solid var(--js-brand);
+  background: var(--js-bg-subtle);
+  border-radius: 0 var(--js-radius-md) var(--js-radius-md) 0;
+  font-style: italic;
+  color: var(--js-text);
+}
+
+.js-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.js-btn-primary,
+.js-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.68rem 1.2rem;
+  border-radius: var(--js-radius-md);
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: transform 0.12s ease, background-color 0.15s ease;
+}
+
+.js-btn-primary {
+  background: var(--js-brand);
+  color: var(--js-brand-ink);
+}
+
+.js-btn-primary:hover {
+  background: var(--js-brand-hover);
+}
+
+.js-btn-secondary {
+  background: var(--js-bg-subtle);
+  color: var(--js-text);
+  border-color: var(--js-border-strong);
+}
+
+.js-btn-secondary:hover {
+  background: var(--js-bg-accent);
+}
+
+.js-hero-figure {
+  margin: 0;
+}
+
+.js-hero-img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: var(--js-radius-md);
+  border: 1px solid var(--js-border);
+  display: block;
+}
+
+.js-figcaption {
+  margin-top: 0.55rem;
+  font-size: 0.84rem;
+  color: var(--js-text-muted);
+}
+
+/* --------------------------------------------------------------------------
+ * 5. SECTION HEADERS, SIBLING CARDS & INTERACTIVE FILTER CONTROLS
+ * -------------------------------------------------------------------------- */
+.js-section {
+  margin-bottom: 2.75rem;
+}
+
+.js-section-header {
+  margin-bottom: 1.35rem;
+}
+
+.js-section-header h2 {
+  font-family: var(--js-font-serif);
+  font-size: clamp(1.45rem, 2.4vw, 1.95rem);
+  margin: 0 0 0.4rem;
+}
+
+.js-section-header p {
+  margin: 0;
+  color: var(--js-text-muted);
+  max-width: 74ch;
+}
+
+.js-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.js-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+@media (max-width: 960px) {
+  .js-grid-3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .js-grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.js-card {
+  background: var(--js-bg-elevated);
+  border: 1px solid var(--js-border);
+  border-radius: var(--js-radius-lg);
+  padding: 1.45rem;
+  box-shadow: var(--js-shadow);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.js-badge {
+  display: inline-block;
+  padding: 0.24rem 0.65rem;
+  border-radius: 999px;
+  background: var(--js-bg-accent);
+  color: var(--js-text);
+  border: 1px solid var(--js-border-strong);
+  font-size: 0.78rem;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+}
+
+.js-card h3 {
+  font-family: var(--js-font-serif);
+  font-size: 1.28rem;
+  margin: 0 0 0.45rem;
+}
+
+.js-card p {
+  margin: 0 0 0.75rem;
+  color: var(--js-text-muted);
+}
+
+.js-card-note {
+  padding: 0.75rem 0.9rem;
+  border-radius: var(--js-radius-md);
+  background: var(--js-bg-subtle);
+  font-size: 0.9rem;
+  color: var(--js-text);
+}
+
+/* Filter Toolbar (Category Pills + Instant Search Input) */
+.js-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.85rem;
+  background: var(--js-bg-elevated);
+  border: 1px solid var(--js-border);
+  border-radius: var(--js-radius-lg);
+  padding: 1rem 1.2rem;
+  margin-bottom: 1.35rem;
+}
+
+.js-pill-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.js-pill-btn {
+  appearance: none;
+  border: 1px solid var(--js-border);
+  background: var(--js-bg-subtle);
+  color: var(--js-text);
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.js-pill-btn[aria-pressed='true'] {
+  background: var(--js-brand);
+  color: var(--js-brand-ink);
+  border-color: var(--js-brand);
+}
+
+.js-search-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1 1 240px;
+  max-width: 340px;
+}
+
+.js-search-input {
+  width: 100%;
+  padding: 0.52rem 0.85rem;
+  border-radius: var(--js-radius-md);
+  border: 1px solid var(--js-border-strong);
+  background: var(--js-bg);
+  color: var(--js-text);
+  font-family: inherit;
+  font-size: 0.92rem;
+}
+
+/* Room Directory Cards */
+.js-room-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+  color: var(--js-text-muted);
+  margin-bottom: 0.35rem;
+}
+
+.js-room-domain {
+  font-weight: 700;
+  color: var(--js-amber);
+}
+
+.js-bug-stamp {
+  font-size: 0.85rem;
+  padding: 0.6rem 0.8rem;
+  border-radius: var(--js-radius-md);
+  background: var(--js-amber-bg);
+  color: var(--js-text);
+}
+
+/* Interactive Timeline & Bug QA Checklist Panel */
+.js-Interactive-panel {
+  background: var(--js-bg-elevated);
+  border: 1px solid var(--js-border);
+  border-radius: var(--js-radius-lg);
+  padding: 1.65rem;
+  box-shadow: var(--js-shadow);
+}
+
+.js-check-list {
+  margin: 0.85rem 0 0;
+  padding-left: 1.25rem;
+}
+
+.js-check-list li {
+  margin-bottom: 0.55rem;
+  color: var(--js-text);
+}
+
+/* --------------------------------------------------------------------------
+ * 6. GLOBAL FOOTER, LICENSING & FICTITIOUS ENTITIES DISCLAIMER
+ * -------------------------------------------------------------------------- */
+.js-footer {
+  background: var(--js-bg-elevated);
+  border-top: 1px solid var(--js-border);
+  padding: 2.25rem 1.25rem;
+  margin-top: auto;
+}
+
+.js-footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  gap: 1.25rem;
+}
+
+.js-footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem 1.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.js-footer-links a {
+  color: var(--js-text);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.js-disclaimer {
+  padding: 1rem 1.15rem;
+  border-radius: var(--js-radius-md);
+  background: var(--js-bg-subtle);
+  border: 1px solid var(--js-border);
+  font-size: 0.85rem;
+  color: var(--js-text-muted);
+}
+
+.js-copyright {
+  font-size: 0.85rem;
+  color: var(--js-text-muted);
+  margin: 0;
+}

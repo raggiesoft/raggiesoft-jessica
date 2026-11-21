@@ -1,0 +1,76 @@
+<!doctype html>
+<!--
+  ============================================================================
+  index.html : Master HTML5 Document Shell for Jessica (jessica.raggiesoft.com)
+  ============================================================================
+  PLAIN-ENGLISH OVERVIEW (100-LEVEL WEB & ACCESSIBILITY GUIDE):
+    What is this file?
+      This is the root HTML5 skeleton used during local development and populated
+      at build time by scripts/prerender.mjs for every static page on
+      https://jessica.raggiesoft.com.
+
+    How Zero-Flash Daylight & Evening Lamp Coloring Works:
+      1. The color-scheme meta tag tells the browser before downloading CSS that
+         this page natively supports both bright Daylight Reading and warm Evening
+         Study Lamp themes, adapting native scrollbars and form inputs automatically.
+      2. The tiny inline script in the head restores a visitor's saved lamp choice
+         onto the root html tag before the first pixel is painted on screen so
+         there is never a jarring flash between light and dark backgrounds.
+      3. During build time, scripts/prerender.mjs replaces the SSR_HEAD and
+         SSR_OUTLET placeholders with each page's title, social preview cards,
+         structured search metadata, and pre-rendered HTML!
+  ============================================================================
+-->
+<html lang="en" data-lamp-mode="auto">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <!-- Tell browsers upfront that both light and dark color schemes are supported natively -->
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f7f4ee" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0b1512" media="(prefers-color-scheme: dark)" />
+
+    <!-- Synchronous Pre-Paint Lamp Restorer (Prevents Flash of Unstyled Background) -->
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem('jessica_lamp_mode');
+          if (saved === 'light' || saved === 'dark') {
+            document.documentElement.setAttribute('data-lamp-mode', saved);
+          }
+        } catch (e) {}
+      })();
+    </script>
+
+    <!--SSR_HEAD-->
+
+    <!-- Shared RaggieSoft Ecosystem Navigation Stylesheet -->
+    <link rel="stylesheet" href="https://assets.raggiesoft.com/common/css/raggiesoft-network.css?v=20261121a" />
+  </head>
+  <body>
+    <!-- Keyboard Skip Link: First Tab stop jumps straight past top bars to the main content -->
+    <a href="#main-content" class="js-skip-link">Skip to Jessica's welcome guide</a>
+
+    <!-- Global RaggieSoft Ecosystem Network Bar (Progressively enhanced by raggiesoft-network.js) -->
+    <nav class="rs-network-bar" aria-label="RaggieSoft Ecosystem Network">
+      <div class="rs-network-bar-inner">
+        <span class="rs-network-label">✦ RaggieSoft Network:</span>
+        <ul class="rs-network-links">
+          <li><a href="https://raggiesoft.com">🌐 Hub</a></li>
+          <li><a href="https://jessica.raggiesoft.com" aria-current="page" class="is-active">🛡️ Jessica</a></li>
+          <li><a href="https://books.raggiesoft.com">📚 Books</a></li>
+          <li><a href="https://music.raggiesoft.com">🎧 Music</a></li>
+          <li><a href="https://lore.raggiesoft.com">🧭 Lore</a></li>
+          <li><a href="https://waystation.raggiesoft.com">🔮 Waystation</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Preact + Signals Pre-Rendered Application Root -->
+    <div id="app"><!--SSR_OUTLET--></div>
+
+    <!-- Shared RaggieSoft Ecosystem Progressive Enhancement Script -->
+    <script src="https://assets.raggiesoft.com/common/js/raggiesoft-network.js?v=20261121a" defer></script>
+    <script type="module" src="/src/entry-client.tsx"></script>
+  </body>
+</html>

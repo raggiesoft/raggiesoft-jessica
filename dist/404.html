@@ -1,0 +1,92 @@
+<!doctype html>
+<!--
+  ============================================================================
+  index.html : Master HTML5 Document Shell for Jessica (jessica.raggiesoft.com)
+  ============================================================================
+  PLAIN-ENGLISH OVERVIEW (100-LEVEL WEB & ACCESSIBILITY GUIDE):
+    What is this file?
+      This is the root HTML5 skeleton used during local development and populated
+      at build time by scripts/prerender.mjs for every static page on
+      https://jessica.raggiesoft.com.
+
+    How Zero-Flash Daylight & Evening Lamp Coloring Works:
+      1. The color-scheme meta tag tells the browser before downloading CSS that
+         this page natively supports both bright Daylight Reading and warm Evening
+         Study Lamp themes, adapting native scrollbars and form inputs automatically.
+      2. The tiny inline script in the head restores a visitor's saved lamp choice
+         onto the root html tag before the first pixel is painted on screen so
+         there is never a jarring flash between light and dark backgrounds.
+      3. During build time, scripts/prerender.mjs replaces the SSR_HEAD and
+         SSR_OUTLET placeholders with each page's title, social preview cards,
+         structured search metadata, and pre-rendered HTML!
+  ============================================================================
+-->
+<html lang="en" data-lamp-mode="auto">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <!-- Tell browsers upfront that both light and dark color schemes are supported natively -->
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f7f4ee" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0b1512" media="(prefers-color-scheme: dark)" />
+
+    <!-- Synchronous Pre-Paint Lamp Restorer (Prevents Flash of Unstyled Background) -->
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem('jessica_lamp_mode');
+          if (saved === 'light' || saved === 'dark') {
+            document.documentElement.setAttribute('data-lamp-mode', saved);
+          }
+        } catch (e) {}
+      })();
+    </script>
+
+    <title>404 — That Door Isn't Down This Hallway | Jessica</title>
+    <meta name="description" content="Jessica couldn't find a room at this address—head back to the front study or visit The Uncharted Waystation to explore RaggieSoft." />
+    <meta name="robots" content="noindex,follow" />
+    <link rel="icon" type="image/svg+xml" href="https://assets.raggiesoft.com/raggiesoft-jessica/images/jessica-hearth-shield.svg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Jessica — Keeper of the House (RaggieSoft)" />
+    <meta property="og:title" content="404 — That Door Isn't Down This Hallway | Jessica" />
+    <meta property="og:description" content="Jessica couldn't find a room at this address—head back to the front study or visit The Uncharted Waystation to explore RaggieSoft." />
+    <meta property="og:url" content="https://jessica.raggiesoft.com/404" />
+    <meta property="og:image" content="https://assets.raggiesoft.com/raggiesoft-jessica/images/og-jessica.jpg" />
+    <meta property="og:image:alt" content="Jessica Ragsdale in her manual wheelchair in the Moosewood Drive study with her brother Michael ('Bear') and sister Rachel ('Bug') behind her" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="404 — That Door Isn't Down This Hallway | Jessica" />
+    <meta name="twitter:description" content="Jessica couldn't find a room at this address—head back to the front study or visit The Uncharted Waystation to explore RaggieSoft." />
+    <meta name="twitter:image" content="https://assets.raggiesoft.com/raggiesoft-jessica/images/og-jessica.jpg" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://jessica.raggiesoft.com/#website","url":"https://jessica.raggiesoft.com/","name":"Jessica — Keeper of the House (RaggieSoft Guide)","description":"Jessica Marie Ragsdale's guided tour of everything her brother Michael conceived and built across RaggieSoft, the November 2006 seed story, and Rachel's ('Bug') quality-testing desk.","inLanguage":"en-US","creator":{"@type":"Person","name":"Michael P. Ragsdale","url":"https://michaelpragsdale.com"},"publisher":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.com"}},{"@type":"AboutPage","@id":"https://jessica.raggiesoft.com/404#webpage","url":"https://jessica.raggiesoft.com/404","name":"404 — That Door Isn't Down This Hallway | Jessica","description":"Jessica couldn't find a room at this address—head back to the front study or visit The Uncharted Waystation to explore RaggieSoft.","isPartOf":{"@id":"https://jessica.raggiesoft.com/#website"},"inLanguage":"en-US","license":"https://creativecommons.org/licenses/by-sa/4.0/"}]}</script>
+
+    <!-- Shared RaggieSoft Ecosystem Navigation Stylesheet -->
+    <link rel="stylesheet" href="https://assets.raggiesoft.com/common/css/raggiesoft-network.css?v=20261121a" />
+    <script type="module" crossorigin src="/assets/index-CHSgmI6O.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-DZlMY2Df.css">
+  </head>
+  <body>
+    <!-- Keyboard Skip Link: First Tab stop jumps straight past top bars to the main content -->
+    <a href="#main-content" class="js-skip-link">Skip to Jessica's welcome guide</a>
+
+    <!-- Global RaggieSoft Ecosystem Network Bar (Progressively enhanced by raggiesoft-network.js) -->
+    <nav class="rs-network-bar" aria-label="RaggieSoft Ecosystem Network">
+      <div class="rs-network-bar-inner">
+        <span class="rs-network-label">✦ RaggieSoft Network:</span>
+        <ul class="rs-network-links">
+          <li><a href="https://raggiesoft.com">🌐 Hub</a></li>
+          <li><a href="https://jessica.raggiesoft.com" aria-current="page" class="is-active">🛡️ Jessica</a></li>
+          <li><a href="https://books.raggiesoft.com">📚 Books</a></li>
+          <li><a href="https://music.raggiesoft.com">🎧 Music</a></li>
+          <li><a href="https://lore.raggiesoft.com">🧭 Lore</a></li>
+          <li><a href="https://waystation.raggiesoft.com">🔮 Waystation</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Preact + Signals Pre-Rendered Application Root -->
+    <div id="app"><div class="js-shell"><header class="js-header"><div class="js-header-inner"><a href="/" class="js-brand-link"><img src="https://assets.raggiesoft.com/raggiesoft-jessica/images/jessica-hearth-shield.svg" alt width="38" height="38" class="js-brand-icon" aria-hidden="true"/><span><span class="js-brand-title">Jessica • Keeper of the House</span><span class="js-brand-subtitle">Michael’s Vision • Big Sister’s Foundation • Bug’s QA</span></span></a><div class="js-nav-row"><nav aria-label="Jessica's Study Pages"><ul class="js-nav-list"><li><a href="/" class="js-nav-link">Welcome Study</a></li><li><a href="/seed-story" class="js-nav-link">The Seed Story</a></li><li><a href="/bear-and-bug" class="js-nav-link">Bear &amp; Bug</a></li><li><a href="/directory" class="js-nav-link">Tour RaggieSoft</a></li><li><a href="/reading-list" class="js-nav-link">Books &amp; Songs</a></li></ul></nav><div class="js-lamp-switcher" role="group" aria-label="Reading light preference"><button type="button" class="js-lamp-btn" aria-pressed="true">Auto</button><button type="button" class="js-lamp-btn" aria-pressed="false">☀️ Daylight</button><button type="button" class="js-lamp-btn" aria-pressed="false">🕯️ Lamp</button></div></div></div></header><main id="main-content" class="js-main" tabindex="-1"><section class="js-Interactive-panel" aria-labelledby="nf-heading"><span class="js-eyebrow">404 • Hallway Check</span><h1 id="nf-heading">That Door Isn’t Down This Hallway.</h1><p class="js-lead">Rachel and I just checked the floor plan, and there isn’t a page at this address on <strong>jessica.raggiesoft.com</strong>. You can head right back into my front study—or visit Nolan and Gwen Lennox over at The Uncharted Waystation for a full compass to every RaggieSoft world.</p><div class="js-cta-row"><a href="/" class="js-btn-primary">Return to Jessica’s Front Study</a><a href="https://waystation.raggiesoft.com" class="js-btn-secondary">Visit The Uncharted Waystation</a><a href="https://books.raggiesoft.com" class="js-btn-secondary">Open RaggieSoft Book Reader</a></div></section></main><footer class="js-footer"><div class="js-footer-inner"><ul class="js-footer-links" aria-label="RaggieSoft Destinations"><li><a href="https://raggiesoft.com">RaggieSoft Hub</a></li><li><a href="https://books.raggiesoft.com">RaggieSoft Book Reader</a></li><li><a href="https://music.raggiesoft.com">The Listening Room</a></li><li><a href="https://crossroads.raggiesoft.com">Story Crossroads</a></li><li><a href="https://cedarrun.raggiesoft.com">Cedar Run</a></li><li><a href="https://waystation.raggiesoft.com">The Uncharted Waystation</a></li><li><a href="https://lore.raggiesoft.com">Lore Encyclopedia</a></li><li><a href="https://corporate.raggiesoft.com">Licensing &amp; Media</a></li></ul><div class="js-disclaimer"><strong>Fictitious Persons &amp; Entities Disclaimer:</strong> All narrative characters (including Jessica, Michael, and Rachel Ragsdale in <em>The Rachel Narrative</em> and <em>The Quantum Directive</em>, as well as bands, biographies, and family histories), universities (CPI, VDU, NPU, The Forgers, The Crucible), corporations (Quantum Corporation, OmniCorp, Apex Records, Prairie Coachworks, Sainte-Claire), transit agencies (BRT, CVTA), in-universe legal filings, and narrative events across RaggieSoft are works of fiction. In real life, RaggieSoft, RaggieSoft Media, Engine Room Records, Ocean View Archives, and RaggieSoft Story Crossroads are unincorporated creative imprints of Michael P. Ragsdale.</div><p class="js-copyright">© 2026 Michael P. Ragsdale (RaggieSoft). Creative stories, artwork, and guides shared under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> (commercial music licensing at <a href="https://raggiesoft.com/raggiesoft-media/licensing/commercial">RaggieSoft Media</a>); site code licensed under MIT.</p></div></footer></div></div>
+
+    <!-- Shared RaggieSoft Ecosystem Progressive Enhancement Script -->
+    <script src="https://assets.raggiesoft.com/common/js/raggiesoft-network.js?v=20261121a" defer></script>
+  </body>
+</html>

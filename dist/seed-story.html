@@ -1,0 +1,93 @@
+<!doctype html>
+<!--
+  ============================================================================
+  index.html : Master HTML5 Document Shell for Jessica (jessica.raggiesoft.com)
+  ============================================================================
+  PLAIN-ENGLISH OVERVIEW (100-LEVEL WEB & ACCESSIBILITY GUIDE):
+    What is this file?
+      This is the root HTML5 skeleton used during local development and populated
+      at build time by scripts/prerender.mjs for every static page on
+      https://jessica.raggiesoft.com.
+
+    How Zero-Flash Daylight & Evening Lamp Coloring Works:
+      1. The color-scheme meta tag tells the browser before downloading CSS that
+         this page natively supports both bright Daylight Reading and warm Evening
+         Study Lamp themes, adapting native scrollbars and form inputs automatically.
+      2. The tiny inline script in the head restores a visitor's saved lamp choice
+         onto the root html tag before the first pixel is painted on screen so
+         there is never a jarring flash between light and dark backgrounds.
+      3. During build time, scripts/prerender.mjs replaces the SSR_HEAD and
+         SSR_OUTLET placeholders with each page's title, social preview cards,
+         structured search metadata, and pre-rendered HTML!
+  ============================================================================
+-->
+<html lang="en" data-lamp-mode="auto">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <!-- Tell browsers upfront that both light and dark color schemes are supported natively -->
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f7f4ee" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0b1512" media="(prefers-color-scheme: dark)" />
+
+    <!-- Synchronous Pre-Paint Lamp Restorer (Prevents Flash of Unstyled Background) -->
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem('jessica_lamp_mode');
+          if (saved === 'light' || saved === 'dark') {
+            document.documentElement.setAttribute('data-lamp-mode', saved);
+          }
+        } catch (e) {}
+      })();
+    </script>
+
+    <title>November 2006: The Rescue &amp; Seed Story | Jessica</title>
+    <meta name="description" content="How Jessica rescued her brother Michael in November 2006 and funded the seed studio desk so his stories, music, and worlds could grow freely." />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://jessica.raggiesoft.com/seed-story" />
+    <link rel="icon" type="image/svg+xml" href="https://assets.raggiesoft.com/raggiesoft-jessica/images/jessica-hearth-shield.svg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Jessica — Keeper of the House (RaggieSoft)" />
+    <meta property="og:title" content="November 2006: The Rescue &amp; Seed Story | Jessica" />
+    <meta property="og:description" content="How Jessica rescued her brother Michael in November 2006 and funded the seed studio desk so his stories, music, and worlds could grow freely." />
+    <meta property="og:url" content="https://jessica.raggiesoft.com/seed-story" />
+    <meta property="og:image" content="https://assets.raggiesoft.com/raggiesoft-jessica/images/jessica-porch-watch.jpg" />
+    <meta property="og:image:alt" content="Jessica Ragsdale in her manual wheelchair in the Moosewood Drive study with her brother Michael ('Bear') and sister Rachel ('Bug') behind her" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="November 2006: The Rescue &amp; Seed Story | Jessica" />
+    <meta name="twitter:description" content="How Jessica rescued her brother Michael in November 2006 and funded the seed studio desk so his stories, music, and worlds could grow freely." />
+    <meta name="twitter:image" content="https://assets.raggiesoft.com/raggiesoft-jessica/images/jessica-porch-watch.jpg" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://jessica.raggiesoft.com/#website","url":"https://jessica.raggiesoft.com/","name":"Jessica — Keeper of the House (RaggieSoft Guide)","description":"Jessica Marie Ragsdale's guided tour of everything her brother Michael conceived and built across RaggieSoft, the November 2006 seed story, and Rachel's ('Bug') quality-testing desk.","inLanguage":"en-US","creator":{"@type":"Person","name":"Michael P. Ragsdale","url":"https://michaelpragsdale.com"},"publisher":{"@type":"Organization","name":"RaggieSoft","url":"https://raggiesoft.com"}},{"@type":"AboutPage","@id":"https://jessica.raggiesoft.com/seed-story#webpage","url":"https://jessica.raggiesoft.com/seed-story","name":"November 2006: The Rescue & Seed Story | Jessica","description":"How Jessica rescued her brother Michael in November 2006 and funded the seed studio desk so his stories, music, and worlds could grow freely.","isPartOf":{"@id":"https://jessica.raggiesoft.com/#website"},"inLanguage":"en-US","license":"https://creativecommons.org/licenses/by-sa/4.0/"}]}</script>
+
+    <!-- Shared RaggieSoft Ecosystem Navigation Stylesheet -->
+    <link rel="stylesheet" href="https://assets.raggiesoft.com/common/css/raggiesoft-network.css?v=20261121a" />
+    <script type="module" crossorigin src="/assets/index-CHSgmI6O.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-DZlMY2Df.css">
+  </head>
+  <body>
+    <!-- Keyboard Skip Link: First Tab stop jumps straight past top bars to the main content -->
+    <a href="#main-content" class="js-skip-link">Skip to Jessica's welcome guide</a>
+
+    <!-- Global RaggieSoft Ecosystem Network Bar (Progressively enhanced by raggiesoft-network.js) -->
+    <nav class="rs-network-bar" aria-label="RaggieSoft Ecosystem Network">
+      <div class="rs-network-bar-inner">
+        <span class="rs-network-label">✦ RaggieSoft Network:</span>
+        <ul class="rs-network-links">
+          <li><a href="https://raggiesoft.com">🌐 Hub</a></li>
+          <li><a href="https://jessica.raggiesoft.com" aria-current="page" class="is-active">🛡️ Jessica</a></li>
+          <li><a href="https://books.raggiesoft.com">📚 Books</a></li>
+          <li><a href="https://music.raggiesoft.com">🎧 Music</a></li>
+          <li><a href="https://lore.raggiesoft.com">🧭 Lore</a></li>
+          <li><a href="https://waystation.raggiesoft.com">🔮 Waystation</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Preact + Signals Pre-Rendered Application Root -->
+    <div id="app"><div class="js-shell"><header class="js-header"><div class="js-header-inner"><a href="/" class="js-brand-link"><img src="https://assets.raggiesoft.com/raggiesoft-jessica/images/jessica-hearth-shield.svg" alt width="38" height="38" class="js-brand-icon" aria-hidden="true"/><span><span class="js-brand-title">Jessica • Keeper of the House</span><span class="js-brand-subtitle">Michael’s Vision • Big Sister’s Foundation • Bug’s QA</span></span></a><div class="js-nav-row"><nav aria-label="Jessica's Study Pages"><ul class="js-nav-list"><li><a href="/" class="js-nav-link">Welcome Study</a></li><li><a href="/seed-story" class="js-nav-link is-active" aria-current="page">The Seed Story</a></li><li><a href="/bear-and-bug" class="js-nav-link">Bear &amp; Bug</a></li><li><a href="/directory" class="js-nav-link">Tour RaggieSoft</a></li><li><a href="/reading-list" class="js-nav-link">Books &amp; Songs</a></li></ul></nav><div class="js-lamp-switcher" role="group" aria-label="Reading light preference"><button type="button" class="js-lamp-btn" aria-pressed="true">Auto</button><button type="button" class="js-lamp-btn" aria-pressed="false">☀️ Daylight</button><button type="button" class="js-lamp-btn" aria-pressed="false">🕯️ Lamp</button></div></div></div></header><main id="main-content" class="js-main" tabindex="-1"><section class="js-hero" aria-labelledby="seed-heading"><div><span class="js-eyebrow">🌱 November 17, 2006 • The Seed That Started It All</span><h1 id="seed-heading">Why I Funded the Desk—and Stepped Out of His Way.</h1><p class="js-lead">When someone you love spends years being told their voice doesn’t matter, a pep talk isn’t enough. You get them out of that house, you hand them real tools with no strings attached, and you guard the perimeter while they remember who they are.</p><blockquote class="js-quote-callout">“I didn’t write a single chapter or melody on RaggieSoft—that’s 100% Michael. My pride is knowing the roof over his studio will never cave in.”</blockquote><div class="js-cta-row"><a href="https://books.raggiesoft.com/rachel" class="js-btn-primary">Read November 2006 in The Rachel Narrative</a><a href="/bear-and-bug" class="js-btn-secondary">Next: Meet Bear &amp; Bug →</a></div></div><figure class="js-hero-figure"><img src="https://assets.raggiesoft.com/raggiesoft-jessica/images/jessica-porch-watch.jpg" alt="Jessica Ragsdale in an emerald cardigan seated in her manual wheelchair holding a warm ceramic mug beside a twilight bay window with a glowing porch lantern outside" width="1200" height="675" class="js-hero-img"/><figcaption class="js-figcaption">Twilight porch watch: keeping the household calm, steady, and independent so nothing interrupts the work inside.</figcaption></figure></section><section class="js-section" aria-labelledby="timeline-heading"><div class="js-section-header"><h2 id="timeline-heading">Four Chapters from Delaney Street to Moosewood Drive</h2><p>Select any era below to see how our three-sibling studio came together.</p></div><div class="js-Interactive-panel"><div class="js-pill-group" role="group" aria-label="Select family milestone"><button type="button" class="js-pill-btn" aria-pressed="false">1995 • Delaney Street</button><button type="button" class="js-pill-btn" aria-pressed="false">2000 – 2006 • Seattle</button><button type="button" class="js-pill-btn" aria-pressed="true">November 17, 2006 • The Rescue &amp; Seed Desk</button><button type="button" class="js-pill-btn" aria-pressed="false">Today • Moosewood Drive</button></div><div style="margin-top:1.35rem;"><span class="js-badge">Virginia Beach, Virginia</span><h3>Moving Christmas Up When Everything Was on the Line</h3><p>I had secretly put together a dream portable studio workstation, music production suite, and design toolkit—double-boxed in plain cardboard—planning to surprise Michael at Christmas so he would see a future beyond his abuser’s roof. When Delores threw him out in mid-November, Christmas moved up that very night. We got him safe, unboxed the workstation, and backed him with the seed money to build on his own terms.</p><div class="js-card-note"><strong>Jessica’s Takeaway:</strong> I provided the rescue and the seed money; every creative spark that followed was 100% Michael’s.</div></div></div></section></main><footer class="js-footer"><div class="js-footer-inner"><ul class="js-footer-links" aria-label="RaggieSoft Destinations"><li><a href="https://raggiesoft.com">RaggieSoft Hub</a></li><li><a href="https://books.raggiesoft.com">RaggieSoft Book Reader</a></li><li><a href="https://music.raggiesoft.com">The Listening Room</a></li><li><a href="https://crossroads.raggiesoft.com">Story Crossroads</a></li><li><a href="https://cedarrun.raggiesoft.com">Cedar Run</a></li><li><a href="https://waystation.raggiesoft.com">The Uncharted Waystation</a></li><li><a href="https://lore.raggiesoft.com">Lore Encyclopedia</a></li><li><a href="https://corporate.raggiesoft.com">Licensing &amp; Media</a></li></ul><div class="js-disclaimer"><strong>Fictitious Persons &amp; Entities Disclaimer:</strong> All narrative characters (including Jessica, Michael, and Rachel Ragsdale in <em>The Rachel Narrative</em> and <em>The Quantum Directive</em>, as well as bands, biographies, and family histories), universities (CPI, VDU, NPU, The Forgers, The Crucible), corporations (Quantum Corporation, OmniCorp, Apex Records, Prairie Coachworks, Sainte-Claire), transit agencies (BRT, CVTA), in-universe legal filings, and narrative events across RaggieSoft are works of fiction. In real life, RaggieSoft, RaggieSoft Media, Engine Room Records, Ocean View Archives, and RaggieSoft Story Crossroads are unincorporated creative imprints of Michael P. Ragsdale.</div><p class="js-copyright">© 2026 Michael P. Ragsdale (RaggieSoft). Creative stories, artwork, and guides shared under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> (commercial music licensing at <a href="https://raggiesoft.com/raggiesoft-media/licensing/commercial">RaggieSoft Media</a>); site code licensed under MIT.</p></div></footer></div></div>
+
+    <!-- Shared RaggieSoft Ecosystem Progressive Enhancement Script -->
+    <script src="https://assets.raggiesoft.com/common/js/raggiesoft-network.js?v=20261121a" defer></script>
+  </body>
+</html>
