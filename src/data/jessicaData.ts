@@ -365,6 +365,20 @@ export const STUDIO_ROOMS: readonly StudioRoomItem[] = [
     bugQaNote: 'Rachel grew up watching Michael tinker on those childhood machines—and now tests the floating Cheat Card beside him!'
   },
   {
+    id: 'a11y-studio',
+    title: 'RaggieSoft Accessibility Studio (From University Batch Tool to Full Studio)',
+    subtitle: 'How a self-started Old Dominion University helper grew into a full desktop studio',
+    category: 'guides',
+    categoryLabel: 'Front Door & Guides',
+    icon: '♿',
+    url: 'https://a11y.raggiesoft.com',
+    domainLabel: 'a11y.raggiesoft.com',
+    jessicaExplanation:
+      'When Michael worked at Old Dominion University helping move hundreds of online classes from ODU’s custom Personal Learning Environment (PLE) into Canvas, nobody asked him to write desktop software—he just saw teammates spending hours checking course pages one by one and quietly built a polite batch-scanning utility on his own initiative. Years later at our Virginia Beach desk, watching me navigate from my wheelchair and watching Rachel test every page by keyboard inspired him to turn that seed idea into RaggieSoft Accessibility Studio: a full Windows workstation studio where builders can see issues side-by-side and fix them cleanly.',
+    bestFirstStep: 'Visit the Accessibility Studio showcase to see how side-by-side guided fixes and readable reports work.',
+    bugQaNote: 'Rachel unplugs the mouse and tests every single keyboard shortcut and high-contrast preview right beside her Bear!'
+  },
+  {
     id: 'corporate',
     title: 'RaggieSoft Media & Licensing',
     subtitle: 'Open-culture sharing rules, commercial licensing, and imprint info',
