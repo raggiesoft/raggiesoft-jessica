@@ -726,7 +726,28 @@ export function App({ initialPath = '/' }: { initialPath?: string }) {
             </span>
           </a>
 
-          <div class="js-nav-row">
+          <button
+            type="button"
+            class="rs-mobile-header-toggle"
+            data-rs-mobile-toggle
+            data-open-label="Open menu"
+            data-close-label="Close menu"
+            aria-expanded="false"
+            aria-controls="header-navigation-panel"
+            aria-label="Open menu"
+          >
+            <svg class="rs-icon-bars" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" aria-hidden="true" focusable="false">
+              <line x1="3" y1="6" x2="21" y2="6" />
+              <line x1="3" y1="12" x2="21" y2="12" />
+              <line x1="3" y1="18" x2="21" y2="18" />
+            </svg>
+            <svg class="rs-icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" aria-hidden="true" focusable="false">
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          </button>
+
+          <div id="header-navigation-panel" class="js-nav-row" data-rs-collapsible="true">
             <nav aria-label="Jessica's Study Pages">
               <ul class="js-nav-list">
                 {SITE_ROUTES.filter((r) => r.inMainNav).map((route) => {
@@ -775,6 +796,15 @@ export function App({ initialPath = '/' }: { initialPath?: string }) {
                 🕯️ Lamp
               </button>
             </div>
+
+            <div
+              class="rs-vdom-slot"
+              ref={(el) => {
+                if (el && !el.hasChildNodes() && typeof window !== 'undefined') {
+                  (window as unknown as { initRaggieSoftNetworkMenu?: () => void }).initRaggieSoftNetworkMenu?.();
+                }
+              }}
+            />
           </div>
         </div>
       </header>
