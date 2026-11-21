@@ -318,13 +318,17 @@ function HomeStudyView({ onNavigate }: { onNavigate: (path: string, e: MouseEven
         </div>
       </section>
 
-      {/* Interactive Tour of Everything on RaggieSoft.com */}
+      {/* Interactive Stories Behind Every RaggieSoft Project */}
       <section class="js-section" aria-labelledby="tour-heading">
         <div class="js-section-header">
-          <h2 id="tour-heading">What Everything on RaggieSoft.com Actually Is</h2>
+          <h2 id="tour-heading">The Personal Story Behind Every RaggieSoft Project</h2>
           <p>
-            New here? Let me walk you through every library, music room, interactive book, and bonus
-            corner my brother built—along with what Rachel checks on each one before it opens.
+            Want to know <em>why</em> my brother dreamed up each book imprint, band, interactive
+            world, and desktop app? Read the story behind every project below—or visit{' '}
+            <a href="https://waystation.raggiesoft.com/realms">
+              The Uncharted Waystation (Global Directory)
+            </a>{' '}
+            anytime you just want our quick A–Z portal map!
           </p>
         </div>
         <GuidedRoomsExplorer showDetailedNotes={false} />
@@ -528,12 +532,14 @@ function DirectoryView() {
   return (
     <section class="js-section" aria-labelledby="dir-heading">
       <div class="js-section-header">
-        <span class="js-eyebrow">🗺️ Complete Room-by-Room Guide</span>
-        <h1 id="dir-heading">Jessica’s Complete Guide to Everything on RaggieSoft.com</h1>
+        <span class="js-eyebrow">💬 Behind the Curtain • Why Each Project Exists</span>
+        <h1 id="dir-heading">The Story Behind Every Project on RaggieSoft</h1>
         <p>
-          Every single property below was conceived and built by Michael, tested side-by-side with
-          Rachel (“Bug”), and kept safe under my roof. Filter by what you feel like enjoying
-          tonight—reading, music, or exploring lore—and jump straight in.
+          Every single project below started as a spark in Michael’s head, was tested side-by-side
+          with Rachel (“Bug”), and lives safely under my roof. Here is the personal and creative
+          story behind why each one exists—and if you ever want the fast A–Z portal map across the
+          whole network, Nolan and Gwen keep our single{' '}
+          <a href="https://waystation.raggiesoft.com/realms">Global Directory at The Waystation</a>.
         </p>
       </div>
 

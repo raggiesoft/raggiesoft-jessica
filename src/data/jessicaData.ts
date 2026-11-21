@@ -79,10 +79,10 @@ export const SITE_ROUTES: readonly SiteRouteMeta[] = [
   },
   {
     path: '/directory',
-    navLabel: 'Tour RaggieSoft',
-    seoTitle: "Jessica's Guided Tour of RaggieSoft.com | All Rooms",
+    navLabel: 'Project Stories',
+    seoTitle: 'Stories Behind Every RaggieSoft Project | Jessica',
     seoDescription:
-      'Jessica explains every book library, listening room, interactive novel, and creative corner her brother Michael built across RaggieSoft.com.',
+      'Jessica shares the personal story behind why Michael created every book library, band, interactive novel, and desktop app across RaggieSoft.',
     ogImage: IMAGES.ogCard,
     inMainNav: true
   },
@@ -184,17 +184,31 @@ export interface StudioRoomItem {
 export const STUDIO_ROOMS: readonly StudioRoomItem[] = [
   {
     id: 'hub',
-    title: 'RaggieSoft Front Porch (Main Hub)',
-    subtitle: 'The front door to everything Michael creates',
+    title: 'RaggieSoft Front Porch (Main Homepage)',
+    subtitle: 'Why Michael wanted a calm, uncluttered front door instead of a noisy portal',
     category: 'guides',
     categoryLabel: 'Front Door & Guides',
     icon: '🌐',
     url: 'https://raggiesoft.com',
     domainLabel: 'raggiesoft.com',
     jessicaExplanation:
-      'Think of raggiesoft.com as the front foyer of our house. If you are visiting for the very first time and want a bird’s-eye view of all of Michael’s books, music albums, desktop apps, and worlds in one welcoming place, start right here.',
-    bestFirstStep: 'Browse the featured worlds or grab the free Book Reader and Listening Room apps for your computer.',
-    bugQaNote: 'Rachel checks every seasonal banner and welcome card on both phone and desktop screens.'
+      'Think of raggiesoft.com as the front foyer of our house. Michael intentionally kept it focused on four welcoming pillars—reading, music, desktop apps, and open-culture sharing—so first-time visitors never feel overwhelmed before stepping into our Global Directory or story rooms.',
+    bestFirstStep: 'Choose between Creative Works and Michael’s portfolio, or jump straight into reading and listening.',
+    bugQaNote: 'Rachel checks every seasonal tribute banner and welcome card on both phone and desktop screens.'
+  },
+  {
+    id: 'launcher',
+    title: 'RaggieSoft Launcher (Desktop App Home)',
+    subtitle: 'Why Michael built an account-free desktop home that respects your computer',
+    category: 'guides',
+    categoryLabel: 'Front Door & Guides',
+    icon: '🚀',
+    url: 'https://launcher.raggiesoft.com',
+    domainLabel: 'launcher.raggiesoft.com',
+    jessicaExplanation:
+      'Modern app launchers drive all three of us crazy with forced accounts, pop-ups, and background bloat. So Michael built RaggieSoft Launcher to unite Book Reader, The Listening Room, Backstage, and StoreTrainer in one quiet window—opening only when you ask, offering Express or Custom setup, and never deleting your offline books, albums, or saved game profiles.',
+    bestFirstStep: 'See all five desktop apps and how the built-in Software Update Wizard keeps them current in one click.',
+    bugQaNote: 'Rachel tested Express Setup, Custom Setup, and every uninstaller checkbox to prove your offline files stay untouched!'
   },
   {
     id: 'books',
@@ -338,17 +352,17 @@ export const STUDIO_ROOMS: readonly StudioRoomItem[] = [
   },
   {
     id: 'storetrainer',
-    title: 'RaggieSoft StoreTrainer Museum',
-    subtitle: 'Playable time capsule of Michael’s classic early-2000s PC game project',
+    title: 'RaggieSoft StoreTrainer (From Childhood PC Utility to 2.0)',
+    subtitle: 'The story behind Michael’s earliest surviving desktop program and its modern rebirth',
     category: 'guides',
     categoryLabel: 'Front Door & Guides',
     icon: '💾',
     url: 'https://storetrainer.raggiesoft.com',
     domainLabel: 'storetrainer.raggiesoft.com',
     jessicaExplanation:
-      'Long before today’s books and albums, teenaged Michael was already building retail simulation games and utilities on classic desktop computers. StoreTrainer preserves that nostalgic early-web charm as a loving museum piece.',
-    bestFirstStep: 'Take a nostalgic trip back to classic late-1990s beveled buttons and Michael’s earliest roots.',
-    bugQaNote: 'Rachel grew up watching Michael tinker on those exact childhood machines on Delaney Street!'
+      'Long before today’s novels and albums, Michael built StoreTrainer on classic desktop Windows to launch favorite PC games alongside their companion trainers without juggling folders. Rather than letting that history collect dust, he preserved the original retro edition for vintage PCs AND built StoreTrainer 2.0 with a gentle upgrade wizard that carries old game profiles forward.',
+    bestFirstStep: 'Explore the nostalgic retro desktop showcase and see how StoreTrainer evolved across generations.',
+    bugQaNote: 'Rachel grew up watching Michael tinker on those childhood machines—and now tests the floating Cheat Card beside him!'
   },
   {
     id: 'corporate',
