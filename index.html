@@ -23,6 +23,14 @@
 -->
 <html lang="en" data-lamp-mode="auto">
   <head>
+    <!-- Google Analytics 4 (GA4) Telemetry Integration (G-P9RG9JVYB6) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-P9RG9JVYB6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-P9RG9JVYB6');
+    </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <!-- Tell browsers upfront that both light and dark color schemes are supported natively -->
@@ -45,7 +53,7 @@
     <!--SSR_HEAD-->
 
     <!-- Shared RaggieSoft Ecosystem Navigation Stylesheet -->
-    <link rel="stylesheet" href="https://assets.raggiesoft.com/common/css/raggiesoft-network.css?v=20261121e" />
+    <link rel="stylesheet" href="https://assets.raggiesoft.com/common/css/raggiesoft-network.css?v=20261125g" />
   </head>
   <body>
     <!-- Keyboard Skip Link: First Tab stop jumps straight past top bars to the main content -->
@@ -70,7 +78,7 @@
     <div id="app"><!--SSR_OUTLET--></div>
 
     <!-- Shared RaggieSoft Ecosystem Progressive Enhancement Script -->
-    <script src="https://assets.raggiesoft.com/common/js/raggiesoft-network.js?v=20261121e" defer></script>
+    <script src="https://assets.raggiesoft.com/common/js/raggiesoft-network.js?v=20261125g" defer></script>
     <script type="module" src="/src/entry-client.tsx"></script>
   </body>
 </html>

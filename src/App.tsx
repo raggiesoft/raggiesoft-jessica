@@ -847,6 +847,17 @@ export function App({ initialPath = '/' }: { initialPath?: string }) {
             <li>
               <a href="https://corporate.raggiesoft.com">Licensing &amp; Media</a>
             </li>
+            <li>
+              <a href="https://raggiesoft.com/about/privacy">Privacy Policy</a>
+            </li>
+            <li>
+              <a href="https://raggiesoft.com/about/terms">Terms of Service</a>
+            </li>
+            <li>
+              <a href="https://raggiesoft.com/about/ai-disclaimer">
+                AI &amp; Creative Process | RaggieSoft Governance
+              </a>
+            </li>
           </ul>
 
           <div class="js-disclaimer">
